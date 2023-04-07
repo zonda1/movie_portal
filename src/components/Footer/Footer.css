@@ -1,12 +1,10 @@
 .footer {
-    background-color: #333;
+    background: #130c45 url(../../images/background.png) 0 50%/100% auto no-repeat;
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    display: block;
+    flex: 0 0 auto;
   }
   
   .footer__content p {

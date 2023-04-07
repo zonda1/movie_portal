@@ -1,0 +1,8 @@
+.not-found {
+    padding: 30px;
+    flex: 1 0 auto;
+}
+
+.not-found h2 {
+    font-size: 3rem;
+}

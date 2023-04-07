@@ -1,76 +1,77 @@
-.movie-details__wrapper {
+.actor-details__wrapper {
   margin: 40px auto;
   max-width: 1200px;
-  flex: 1 0 auto;
   padding: 40px;
+  flex: 1 0 auto;
 }
 
-.movie-details {
+.actor-details {
     display: flex;
     background-color: #f5f5f588;
     box-shadow: 10px 10px 8px 0px rgba(0, 0, 0, 0.2);
   }
   
-  .movie-details__poster {
+  .actor-details__poster {
     width: 400px;
     height: 600px;
     object-fit: cover;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   }
   
-  .movie-details__info {
+  .actor-details__info {
     margin-left: 40px;
   }
   
-  .movie-details__title {
+  .actor-details__title {
     font-size: 48px;
     font-weight: bold;
+    margin-top: 0;
     margin-bottom: 20px;
   }
   
-  .movie-details__overview {
+  .actor-details__overview {
     font-size: 24px;
     margin-bottom: 40px;
     line-height: 40px;
   }
   
-  .movie-details__info p {
+  .actor-details__info p {
     font-size: 24px;
     margin-bottom: 20px;
   }
   
   /* Adaptive styles for screens smaller than 768px */
-  @media screen and (max-width: 768px) {
-    .movie-details {
+  /* @media screen and (max-width: 768px) {
+    .actor-details {
       flex-direction: column;
       align-items: center;
       padding: 20px;
     }
   
-    .movie-details__poster {
+    .actor-details__poster {
       width: 100%;
       height: auto;
       margin-bottom: 20px;
     }
   
-    .movie-details__info {
+    .actor-details__info {
       margin-left: 0;
       text-align: center;
     }
   
-    .movie-details__title {
+    .actor-details__title {
       font-size: 36px;
       margin-bottom: 10px;
     }
   
-    .movie-details__overview {
+    .actor-details__overview {
       font-size: 20px;
       margin-bottom: 20px;
       line-height: 30px;
     }
   
-    .movie-details__info p {
+    .actor-details__info p {
       font-size: 20px;
       margin-bottom: 10px;
     }
-  }
+  } */
