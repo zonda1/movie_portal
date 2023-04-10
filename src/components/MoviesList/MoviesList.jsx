@@ -23,9 +23,14 @@ const MoviesList = ({ category, filter}) => {
     }
   };
 
+ 
+
   useEffect(() => {
     if (query.length > 2) {
-      // console.log('dispatch query');
+
+      if (query.match('[^0-9a-z]')) {
+        throw new Error('Only letters and numbers are permitted');
+      }
       dispatch(fetchMoviesByQuery(query, page));
     } else {
       dispatch(fetchMoviesByCategory(category, page));

@@ -1,0 +1,59 @@
+.fallback {
+  text-align: center;
+  padding: 40px;
+}
+
+.fallback__pic {
+  margin-bottom: 20px;
+}
+.fallback__pic img {
+  width: 200px;
+  height: 200px;
+}
+
+.fallback h1 {
+  font-size: 60px;
+}
+.fallback p {
+  font-size: 40px;
+  color: red;
+}
+
+.fallback__button {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 40px;
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #000;
+  background-color: transparent;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.fallback__button:hover {
+  opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+  .fallback {
+    padding: 20px;
+  }
+
+  .fallback__pic {
+    margin-bottom: 10px;
+  }
+  .fallback__pic img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .fallback h1 {
+    font-size: 30px;
+  }
+  .fallback p {
+    font-size: 20px;
+  }
+  .fallback__button {
+    font-size: 20px;
+    width: 150px;
+    padding: 10px;
+  }
+}

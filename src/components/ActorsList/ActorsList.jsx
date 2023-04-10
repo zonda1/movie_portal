@@ -11,21 +11,18 @@ const ActorsList = () => {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
-  console.log(fetchedActors);
 
   useEffect(() => {
     if (query.length > 2) {
+      if (query.match('[^a-z]')) {
+        throw new Error('Only letters are permitted');
+      }
       dispatch(fetchActorsByQuery(query, page));
     } else {
       dispatch(fetchActors(page));
     }
   }, [page, query]);
 
-  // useEffect(() => {
-  //   if (!fetchedActors) {
-  //     return <Loader />;
-  //   }
-  // }, []);
 
   if (!fetchedActors) {
     return <Loader />;
