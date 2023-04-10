@@ -41,9 +41,7 @@ export const fetchActorsByQuery = (query, page) => {
         },
       })
       .then((response) => {
-        if (page === 1) {
-          dispatch(setPages(response.data.total_pages));
-        }
+        dispatch(setPages(response.data.total_pages));
         dispatch(setActorsAction(response.data.results));
       });
   };
@@ -74,9 +72,7 @@ export const fetchMoviesByQuery = (query, page) => {
         },
       })
       .then((response) => {
-        if (page === 1) {
-          dispatch(setPages(response.data.total_pages));
-        }
+        dispatch(setPages(response.data.total_pages));
         dispatch(setMoviesAction(response.data.results));
       });
   };

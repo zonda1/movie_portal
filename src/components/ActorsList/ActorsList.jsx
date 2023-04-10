@@ -18,11 +18,16 @@ const ActorsList = () => {
         throw new Error('Only letters are permitted');
       }
       dispatch(fetchActorsByQuery(query, page));
-      setPage(1);
     } else {
       dispatch(fetchActors(page));
     }
   }, [page, query]);
+
+  useEffect(()=>{
+    if (page>totalPages) {
+      setPage(1);
+    }
+  },[page,totalPages] )
 
 
   if (!fetchedActors) {

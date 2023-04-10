@@ -30,11 +30,16 @@ const MoviesList = ({ category, filter }) => {
         throw new Error('Only letters and numbers are permitted');
       }
       dispatch(fetchMoviesByQuery(query, page));
-      setPage(1);
     } else {
       dispatch(fetchMoviesByCategory(category, page));
     }
   }, [category, page, query]);
+
+  useEffect(()=>{
+    if (page>totalPages) {
+      setPage(1);
+    }
+  },[page,totalPages] )
 
 
   if (!fetchedMovies) {
