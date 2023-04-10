@@ -50,6 +50,7 @@ button {
 
 input,
 select {
+  box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
 }
@@ -69,7 +70,6 @@ ul {
 }
 
 .filters input {
-  flex:1 0 200px;
   background-color: transparent;
   color: #333;
   font-family:'Courier New', Courier, monospace;
@@ -77,4 +77,22 @@ ul {
   padding: 10px;
   font-size: 1.5rem;
   border-radius: 3px;
+}
+
+@media (max-width:768px) {
+
+  html {
+    background:#9cb0e6;
+  }
+  
+  .return__link svg {
+    font-size: 30px;
+  }
+  
+  .css-40vhz7-MuiPagination-root {
+    margin: 10px 0 !important;
+  }
+  .css-40vhz7-MuiPagination-root ul {
+    justify-content: center;
+  }
 }

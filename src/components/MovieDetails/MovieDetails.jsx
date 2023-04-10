@@ -4,6 +4,7 @@ import { fetchMovieById } from '../../store/thunk/thunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Loader from '../Loader/Loader';
 import './MovieDetails.css';
 
 const MovieDetails = () => {
@@ -24,7 +25,7 @@ const MovieDetails = () => {
   }, [loading, selectedMovie])
 
   if (!selectedMovie) {
-    return <div style={{flex:'1 0 auto',fontSize:'3rem',padding:'30px'}}>Loading...</div>;
+    return <Loader/>;
   }
 
   return (

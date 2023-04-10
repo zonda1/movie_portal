@@ -1,5 +1,5 @@
 .header {
-  background: #130c45 url(../../images/background.png) 0 50%/100% auto no-repeat;
+  background: #130c45 url(../../images/background.png) 0 0/cover no-repeat;
   flex:0 0 100px;
   display: flex;
   align-items: center;
@@ -35,4 +35,18 @@
 
 .nav__item a:hover {
   transform: scale(1.2);
+}
+
+@media (max-width:768px) {
+  .header {
+    justify-content: center;
+  }
+  .header__logo { 
+    display: none;
+    margin: 0;
+  }
+  
+  .nav__item a {
+    font-size: 1.5rem;
+  }
 }

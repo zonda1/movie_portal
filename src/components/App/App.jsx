@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ const App = () => {
         <Route path='/movies/:id' element={<MovieDetails />} />
         <Route path='/actors' element={<ActorsList />} />
         <Route path='/actors/:id' element={<ActorDetails />} />
-        <Route path='*' element={<NotFound/>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
 
       <Footer />

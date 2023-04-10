@@ -5,32 +5,36 @@ import {
 } from '../../store/thunk/thunk';
 import { useDispatch, useSelector } from 'react-redux';
 import './MoviesList.css';
-import { Pagination, Stack, TextField } from '@mui/material';
+import { Pagination, PaginationItem, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
+import Loader from '../Loader/Loader';
 
-const MoviesList = ({ category, filter }) => {
+const MoviesList = ({ category, filter}) => {
   const { fetchedMovies, totalPages } = useSelector((state) => state.movies);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
 
   const buttonClickHandler = (e) => {
-    if (e.target.tagName==='BUTTON') {
+    if (e.target.tagName === 'BUTTON') {
       filter(e.target.value);
       setPage(1);
     }
   };
 
-  // console.log(fetchedMovies);
-
   useEffect(() => {
-    if (query.length>2) {
-      console.log('dispatch query');
+    if (query.length > 2) {
+      // console.log('dispatch query');
       dispatch(fetchMoviesByQuery(query, page));
     } else {
       dispatch(fetchMoviesByCategory(category, page));
     }
   }, [category, page, query]);
+
+  if (!fetchedMovies) {
+    return <Loader />;
+  }
 
   return (
     <div className='movies-list__wrapper'>
@@ -48,17 +52,12 @@ const MoviesList = ({ category, filter }) => {
           <button className='filters__button' value='upcoming' type='button'>
             Upcoming
           </button>
-          {/* <TextField
-            label='Search'
+          <DebounceInput
+            minLength={3}
+            debounceTimeout={1000}
+            placeholder='Search'
             onChange={(e) => setQuery(e.target.value)}
-            style={{ flex: '1 0 auto', marginLeft: 'auto' }}
-          ></TextField> */}
-           <DebounceInput
-              minLength={3}
-              debounceTimeout={1000}
-              placeholder='Search'
-              onChange={(e) => setQuery(e.target.value)}
-            ></DebounceInput>
+          ></DebounceInput>
         </div>
         <h2 className='movies-list__title'>
           {!!category && category.split('_').join(' ')} movies
@@ -77,18 +76,27 @@ const MoviesList = ({ category, filter }) => {
             </li>
           ))}
         </ul>
-        {!!totalPages && <Stack>
-        <Pagination
-          count={totalPages < 500 ? totalPages : 500}
-          page={page}
-          color='primary'
-          size="large"
-          showFirstButton
-          showLastButton
-          onChange={(_, num) => setPage(num)}
-          sx={{marginX:'auto',marginY:2}}
-        ></Pagination>
-        </Stack>}
+        {!!totalPages && (
+          <Stack>
+            <Pagination
+              count={totalPages < 500 ? totalPages : 500}
+              page={page}
+              color='primary'
+              size='large'
+              showFirstButton
+              showLastButton
+              onChange={(_, num) => setPage(num)}
+              sx={{ marginX: 'auto', marginY: 2 }}
+              renderItem={(item) => (
+                <PaginationItem
+                  component={Link}
+                  to={`/?page=${item.page}`}
+                  {...item}
+                />
+              )}
+            ></Pagination>
+          </Stack>
+        )}
       </div>
     </div>
   );

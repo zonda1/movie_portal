@@ -1,115 +1,135 @@
 .movies-list__wrapper {
-    max-width: 900px;
-    margin: 0 auto 60px;
-    padding: 20px;
-    box-sizing: border-box;
-    flex: 1 0 auto;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+}
+
+.movies-list__container {
+  background-color: #ffffff4d;
+  box-shadow: 10px 10px 8px 0px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movies-list__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 0 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #333;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.movie-item {
+  width: calc(20% - 10px);
+  margin-bottom: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.47);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.movie-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.67);
+}
+
+.movie-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.movie-title {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem;
+  z-index: 1;
+}
+
+.movies-list__filters {
+  padding: 10px;
+  display: flex;
+  margin-bottom: 20px;
+}
+.movies-list__filters input {
+  width: 35%;
+  margin-left: auto;
+}
+
+.filters__button {
+  font-size: 2rem;
+  margin-right: 20px;
+}
+
+.filters__button:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .movies-list__wrapper {
+    max-width: 360px;
+    margin: 0 auto 20px;
+    padding: 10px;
   }
 
   .movies-list__container {
-    background-color: #ffffff4d;
-    box-shadow: 10px 10px 8px 0px rgba(0, 0, 0, 0.2);
-    padding-top:20px ;
+    padding: 10px;
   }
 
-  .movies-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .movie-item {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .movies-list__title {
+    font-size: 30px;
     
   }
-  
-  .movies-list__title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 0 0 1.5rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    color: #333;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-  }
-  
-  
-  .movie-item {
-    width: calc(20% - 10px);
-    margin-bottom: 20px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.47);
-    border-radius: 4px;
-    overflow: hidden;
-    transition: all 0.2s ease;
-    cursor: pointer;
-  }
-  
-  .movie-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.67);
-  }
-  
-  .movie-link {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  
-  .movie-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  .movie-title {
-    display: block;
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 0.5rem;
-    z-index: 1;
-  }
-  
+
   .movies-list__filters {
     padding: 10px;
-    display: flex;
-    margin-bottom: 20px;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .movies-list__filters input {
+    width: 100%;
   }
 
   .filters__button {
-    font-size: 2rem;
-    margin-right: 20px;
+    font-size: 30px;
+    margin: 0 0 15px;
   }
-
-  .filters__button:hover {
-    color: rgba(0, 0, 0, 0.5);
+  .movie-title {
+    font-size: 20px;
   }
-
-
-
-  @media (max-width: 768px) {
-    .movie-list__wrapper {
-      max-width: 100%;
-      margin: 0 auto 40px;
-      padding: 10px;
-    }
-  
-    .movie-item {
-      width: calc(33.33% - 10px);
-      margin-bottom: 10px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .movie-item {
-      width: calc(50% - 10px);
-    }
-  }
+}
