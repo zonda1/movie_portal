@@ -84,6 +84,11 @@
   width: 50%;
 }
 
+.actors-list__empty {
+  text-align: center;
+  font-size: 30px;
+}
+
 @media (max-width: 768px) {
   .actors-list__wrapper {
     max-width: 360px;
@@ -97,7 +102,6 @@
 
   .actors-list__title {
     font-size: 30px;
-
     margin: 0 0 15px;
   }
 
@@ -119,5 +123,9 @@
 
   .actors-list__filters input {
     width: 100%;
+  }
+
+  .actors-list__empty {
+    font-size: 20px;
   }
 }

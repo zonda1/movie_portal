@@ -47,7 +47,7 @@ const ActorsList = () => {
           ></DebounceInput>
         </div>
         <h2 className='actors-list__title'>Actors</h2>
-        <ul className='actors-list'>
+       {fetchedActors.length>0 ? <ul className='actors-list'>
           {fetchedActors.map((actor) => (
             <li className='actors-item' key={actor.id}>
               <a className='actors-link' href={`/actors/${actor.id}`}>
@@ -60,8 +60,8 @@ const ActorsList = () => {
               </a>
             </li>
           ))}
-        </ul>
-        {!!totalPages && (
+        </ul>:<p className='actors-list__empty'>No such actors</p>}
+        {totalPages>1 && (
           <Stack>
             <Pagination
               count={totalPages}

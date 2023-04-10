@@ -73,7 +73,7 @@ const MoviesList = ({ category, filter }) => {
         <h2 className='movies-list__title'>
           {!!category && category.split('_').join(' ')} movies
         </h2>
-        <ul className='movies-list'>
+        {fetchedMovies.length>0? <ul className='movies-list'>
           {fetchedMovies.map((movie) => (
             <li className='movie-item' key={movie.id}>
               <a className='movie-link' href={`/movies/${movie.id}`}>
@@ -86,8 +86,8 @@ const MoviesList = ({ category, filter }) => {
               </a>
             </li>
           ))}
-        </ul>
-        {!!totalPages && (
+        </ul>:<p className='movies-list__empty'>No such movies</p>}
+        {totalPages>1 && (
           <Stack>
             <Pagination
               count={totalPages < 500 ? totalPages : 500}

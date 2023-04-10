@@ -95,6 +95,11 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
+.movies-list__empty {
+  font-size: 30px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .movies-list__wrapper {
     max-width: 360px;
@@ -113,7 +118,6 @@
   }
   .movies-list__title {
     font-size: 30px;
-    
   }
 
   .movies-list__filters {
@@ -130,6 +134,10 @@
     margin: 0 0 15px;
   }
   .movie-title {
+    font-size: 20px;
+  }
+
+  .movies-list__empty {
     font-size: 20px;
   }
 }
