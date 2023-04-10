@@ -14,10 +14,11 @@ const ActorsList = () => {
 
   useEffect(() => {
     if (query.length > 2) {
-      if (query.match('[^a-z]')) {
+      if (query.match('[^a-zA-Z]')) {
         throw new Error('Only letters are permitted');
       }
       dispatch(fetchActorsByQuery(query, page));
+      setPage(1);
     } else {
       dispatch(fetchActors(page));
     }
@@ -36,6 +37,7 @@ const ActorsList = () => {
             minLength={3}
             debounceTimeout={1000}
             placeholder='Search'
+            value={query}
             onChange={(e) => setQuery(e.target.value)}
           ></DebounceInput>
         </div>

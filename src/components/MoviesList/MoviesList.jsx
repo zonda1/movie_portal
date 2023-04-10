@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import Loader from '../Loader/Loader';
 
-const MoviesList = ({ category, filter}) => {
+const MoviesList = ({ category, filter }) => {
   const { fetchedMovies, totalPages } = useSelector((state) => state.movies);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
@@ -20,22 +20,22 @@ const MoviesList = ({ category, filter}) => {
     if (e.target.tagName === 'BUTTON') {
       filter(e.target.value);
       setPage(1);
+      setQuery('');
     }
   };
 
- 
-
   useEffect(() => {
     if (query.length > 2) {
-
-      if (query.match('[^0-9a-z]')) {
+      if (query.match('[^0-9a-zA-Z]')) {
         throw new Error('Only letters and numbers are permitted');
       }
       dispatch(fetchMoviesByQuery(query, page));
+      setPage(1);
     } else {
       dispatch(fetchMoviesByCategory(category, page));
     }
   }, [category, page, query]);
+
 
   if (!fetchedMovies) {
     return <Loader />;
@@ -61,6 +61,7 @@ const MoviesList = ({ category, filter}) => {
             minLength={3}
             debounceTimeout={1000}
             placeholder='Search'
+            value={query}
             onChange={(e) => setQuery(e.target.value)}
           ></DebounceInput>
         </div>
