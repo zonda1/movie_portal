@@ -87,6 +87,7 @@
 }
 
 .filters__button {
+  font-weight: 600;
   font-size: 2rem;
   margin-right: 20px;
 }

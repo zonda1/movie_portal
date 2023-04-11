@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Header from '../Header/Header';
 import MoviesList from '../MoviesList/MoviesList';
@@ -22,15 +22,16 @@ const App = () => {
       <Header />
 
       <Routes>
+        <Route path='/' element={<Navigate to={'/movies'} />} />
         <Route
-          path='/'
+          path='/movies'
           element={
             <MoviesList category={stateCategory} filter={categoryChanger} />
           }
-        />
+        ></Route>
         <Route path='/movies/:id' element={<MovieDetails />} />
         <Route path='/actors' element={<ActorsList />} />
-        <Route path='/actors/:id' element={<ActorDetails />} />
+        <Route path='/person/:id' element={<ActorDetails />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
 
