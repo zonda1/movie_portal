@@ -76,14 +76,14 @@ const MoviesList = ({ category, filter }) => {
         {fetchedMovies.length>0? <ul className='movies-list'>
           {fetchedMovies.map((movie) => (
             <li className='movie-item' key={movie.id}>
-              <a className='movie-link' href={`/movies/${movie.id}`}>
+              <Link className='movie-link' to={`/movie/${movie.id}`}>
                 <img
                   className='movie-poster'
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}
                 />
                 <span className='movie-title'>{movie.title}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>:<p className='movies-list__empty'>No such movies</p>}
@@ -98,13 +98,13 @@ const MoviesList = ({ category, filter }) => {
               showLastButton
               onChange={(_, num) => setPage(num)}
               sx={{ marginX: 'auto', marginY: 2 }}
-              renderItem={(item) => (
-                <PaginationItem
-                  component={Link}
-                  to={`/?page=${item.page}`}
-                  {...item}
-                />
-              )}
+              // renderItem={(item) => (
+              //   <PaginationItem
+              //     component={Link}
+              //     to={`/?page=${item.page}`}
+              //     {...item}
+              //   />
+              // )}
             ></Pagination>
           </Stack>
         )}

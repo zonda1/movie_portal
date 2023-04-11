@@ -7,8 +7,8 @@ const Header = () => {
             <div className='header__logo'><img src="./images/logo.jpg" alt="logo" /></div>
             <nav className='nav'>
                 <ul className='nav__list'>
-                    <li className='nav__item' ><Link to={"/"} replace={true}>  Home</Link></li>
-                    <li className='nav__item' ><a href="/actors">Actors</a></li>
+                    <li className='nav__item' ><Link to={"/"} replace={true}>Home</Link></li>
+                    <li className='nav__item' ><Link to={"/actors"} replace={true}>Actors</Link></li>
                 </ul>
             </nav>
         </header>

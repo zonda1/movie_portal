@@ -29,7 +29,7 @@ const App = () => {
             <MoviesList category={stateCategory} filter={categoryChanger} />
           }
         ></Route>
-        <Route path='/movies/:id' element={<MovieDetails />} />
+        <Route path='/movie/:id' element={<MovieDetails />} />
         <Route path='/actors' element={<ActorsList />} />
         <Route path='/person/:id' element={<ActorDetails />} />
         <Route path='*' element={<NotFound />} />

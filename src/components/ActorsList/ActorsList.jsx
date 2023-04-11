@@ -5,6 +5,7 @@ import { Pagination, Stack } from '@mui/material';
 import { DebounceInput } from 'react-debounce-input';
 import Loader from '../Loader/Loader';
 import './ActorsList.css';
+import { Link } from 'react-router-dom';
 
 const ActorsList = () => {
   const { fetchedActors, totalPages } = useSelector((state) => state.movies);
@@ -50,14 +51,14 @@ const ActorsList = () => {
        {fetchedActors.length>0 ? <ul className='actors-list'>
           {fetchedActors.map((actor) => (
             <li className='actors-item' key={actor.id}>
-              <a className='actors-link' href={`/actors/${actor.id}`}>
+              <Link className='actors-link' to={`/person/${actor.id}`}>
                 <img
                   className='actors-poster'
                   src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                   alt={actor.title}
                 />
                 <span className='actors-name'>{actor.name}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>:<p className='actors-list__empty'>No such actors</p>}
