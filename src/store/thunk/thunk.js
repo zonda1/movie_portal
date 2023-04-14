@@ -7,7 +7,7 @@ import {
   setPages,
   startLoadingAction,
   endLoadingAction,
-} from '../reducer/reducer';
+} from '../actions/actions';
 
 const API_KEY = '4f58cb7827938d0b9a7356e8f717f1d8';
 const API_BASE_URL = 'https://api.themoviedb.org/3';
