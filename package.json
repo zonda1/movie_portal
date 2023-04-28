@@ -1,7 +1,7 @@
 {
   "name": "movie_portal",
   "version": "0.1.0",
-  "homepage":"https://zonda1_movie-portal.github.io/",
+  "homepage": "https://zonda1_movie-portal.github.io/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -9,6 +9,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
     "@redux-devtools/extension": "^3.2.5",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

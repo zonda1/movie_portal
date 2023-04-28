@@ -10,7 +10,7 @@ import './MovieDetails.css';
 const MovieDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { selectedMovie, loading} = useSelector((state) => state.movies);
+  const { selectedMovie, loading} = useSelector((state) => state);
 
   const navigate = useNavigate();
 

@@ -1,8 +1,16 @@
-import {createStore, applyMiddleware, combineReducers} from "redux";
-import thunkMiddleware from "redux-thunk";
-import {reducer} from "./reducer/reducer";
-import { composeWithDevTools } from '@redux-devtools/extension';
+import { configureStore} from '@reduxjs/toolkit';
+import { createApi } from '../services/api';
+import { reducer } from './reducer/reducer';
 
-const rootReducer = combineReducers({ movies: reducer });
 
-export const store = createStore(rootReducer , composeWithDevTools(applyMiddleware(thunkMiddleware)));
+const api=createApi();
+
+export const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,
+      },
+    }),
+});

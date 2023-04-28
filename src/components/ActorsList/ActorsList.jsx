@@ -8,7 +8,7 @@ import './ActorsList.css';
 import { Link } from 'react-router-dom';
 
 const ActorsList = () => {
-  const { fetchedActors, totalPages } = useSelector((state) => state.movies);
+  const { fetchedActors, totalPages } = useSelector((state) => state);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const ActorsList = () => {
       if (query.match('[^a-zA-Z]')) {
         throw new Error('Only letters are permitted');
       }
-      dispatch(fetchActorsByQuery(query, page));
+      dispatch(fetchActorsByQuery({query, page}));
     } else {
       dispatch(fetchActors(page));
     }

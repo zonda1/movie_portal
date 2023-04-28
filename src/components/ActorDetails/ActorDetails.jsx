@@ -10,7 +10,7 @@ const ActorDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { selectedActor, loading } = useSelector((state) => state.movies);
+  const { selectedActor, loading } = useSelector((state) => state);
  
   useEffect(() => {
     dispatch(fetchActorById(id));

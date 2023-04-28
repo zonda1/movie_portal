@@ -1,3 +1,5 @@
+import { createAction } from '@reduxjs/toolkit';
+
 export const ACTIONS = {
   SET_MOVIES: 'SET_MOVIES',
   SET_SELECTED_MOVIE: 'SET_SELECTED_MOVIE',
@@ -8,36 +10,51 @@ export const ACTIONS = {
   END_LOADING: 'END_LOADING',
 };
 
-export const setActorsAction = (payload) => ({
-  type: ACTIONS.SET_ACTORS,
-  payload,
+export const setActorsAction = createAction(ACTIONS.SET_ACTORS, (value) => {
+  return {
+    payload: value,
+  };
 });
-export const setSelectedActorAction = (payload) => ({
-  type: ACTIONS.SET_SELECTED_ACTOR,
-  payload,
+export const setSelectedActorAction = createAction(
+  ACTIONS.SET_SELECTED_ACTOR,
+  (value) => {
+    return {
+      payload: value,
+    };
+  }
+);
+export const setMoviesAction = createAction(
+  ACTIONS.SET_MOVIES,
+  (value) => {
+    return {
+      payload: value,
+    };
+  }
+);
+export const setSelectedMovieAction = createAction(
+  ACTIONS.SET_SELECTED_MOVIE,
+  (value) => {
+    return {
+      payload: value,
+    };
+  }
+);
+export const setPages = createAction(ACTIONS.SET_PAGES, (value) => {
+  return {
+    payload: value,
+  };
 });
 
-export const setMoviesAction = (payload) => ({
-  type: ACTIONS.SET_MOVIES,
-  payload,
-});
-
-export const setSelectedMovieAction = (payload) => ({
-  type: ACTIONS.SET_SELECTED_MOVIE,
-  payload,
-});
-
-export const startLoadingAction = () => ({
-  type: ACTIONS.START_LOADING,
-  payload: undefined,
-});
-
-export const setPages = (payload) => ({
-  type: ACTIONS.SET_PAGES,
-  payload,
-});
-
-export const endLoadingAction = () => ({
-  type: ACTIONS.END_LOADING,
-  payload: undefined,
+export const startLoadingAction = createAction(
+  ACTIONS.START_LOADING,
+  (value) => {
+    return {
+      payload: undefined,
+    };
+  }
+);
+export const endLoadingAction = createAction(ACTIONS.END_LOADING, (value) => {
+  return {
+    payload: undefined,
+  };
 });

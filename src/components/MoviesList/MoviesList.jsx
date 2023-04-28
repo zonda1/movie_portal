@@ -5,13 +5,13 @@ import {
 } from '../../store/thunk/thunk';
 import { useDispatch, useSelector } from 'react-redux';
 import './MoviesList.css';
-import { Pagination, PaginationItem, Stack } from '@mui/material';
+import { Pagination, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { DebounceInput } from 'react-debounce-input';
 import Loader from '../Loader/Loader';
 
 const MoviesList = ({ category, filter }) => {
-  const { fetchedMovies, totalPages } = useSelector((state) => state.movies);
+  const { fetchedMovies, totalPages } = useSelector((state) => state);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
@@ -29,18 +29,17 @@ const MoviesList = ({ category, filter }) => {
       if (query.match('[^0-9a-zA-Z]')) {
         throw new Error('Only letters and numbers are permitted');
       }
-      dispatch(fetchMoviesByQuery(query, page));
+      dispatch(fetchMoviesByQuery({query, page}));
     } else {
-      dispatch(fetchMoviesByCategory(category, page));
+      dispatch(fetchMoviesByCategory({category, page}));
     }
   }, [category, page, query]);
 
-  useEffect(()=>{
-    if (page>totalPages) {
+  useEffect(() => {
+    if (page > totalPages) {
       setPage(1);
     }
-  },[page,totalPages] )
-
+  }, [page, totalPages]);
 
   if (!fetchedMovies) {
     return <Loader />;
@@ -73,21 +72,25 @@ const MoviesList = ({ category, filter }) => {
         <h2 className='movies-list__title'>
           {!!category && category.split('_').join(' ')} movies
         </h2>
-        {fetchedMovies.length>0? <ul className='movies-list'>
-          {fetchedMovies.map((movie) => (
-            <li className='movie-item' key={movie.id}>
-              <Link className='movie-link' to={`/movie/${movie.id}`}>
-                <img
-                  className='movie-poster'
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={movie.title}
-                />
-                <span className='movie-title'>{movie.title}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>:<p className='movies-list__empty'>No such movies</p>}
-        {totalPages>1 && (
+        {fetchedMovies.length > 0 ? (
+          <ul className='movies-list'>
+            {fetchedMovies.map((movie) => (
+              <li className='movie-item' key={movie.id}>
+                <Link className='movie-link' to={`/movie/${movie.id}`}>
+                  <img
+                    className='movie-poster'
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <span className='movie-title'>{movie.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className='movies-list__empty'>No such movies</p>
+        )}
+        {totalPages > 1 && (
           <Stack>
             <Pagination
               count={totalPages < 500 ? totalPages : 500}
@@ -98,13 +101,6 @@ const MoviesList = ({ category, filter }) => {
               showLastButton
               onChange={(_, num) => setPage(num)}
               sx={{ marginX: 'auto', marginY: 2 }}
-              // renderItem={(item) => (
-              //   <PaginationItem
-              //     component={Link}
-              //     to={`/?page=${item.page}`}
-              //     {...item}
-              //   />
-              // )}
             ></Pagination>
           </Stack>
         )}
